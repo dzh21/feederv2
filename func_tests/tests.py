@@ -6,8 +6,10 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 class HomeNewVisitorTest(StaticLiveServerTestCase):
 
-    def setUp(self):
-        self.browser = webdriver.Firefox()
+    def setUp(self):        
+        profile_name = '/home/dzh/.mozilla/firefox/elo3wssm.default'
+        profile = webdriver.FirefoxProfile(profile_name)
+        self.browser = webdriver.Firefox(firefox_profile=profile)
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
@@ -27,3 +29,9 @@ class HomeNewVisitorTest(StaticLiveServerTestCase):
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEquals(h1.value_of_css_property("color"),
             "rgba(200, 50, 255, 1)")
+
+	def test_home_files(self):
+		self.browser.get(self.live_server_url + "/robots.txt")
+		self.assertNotIn("Not found", self.browser.title)
+		self.browser.get(self.live_server_url + "/humans.txt")
+		self.assertNotIn("Not found", self.browser.title)
