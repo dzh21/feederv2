@@ -3,13 +3,14 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    dzh -- developer -- <twitter>
 
 # THANKS
 
-    <name>
+    Thanks for all
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     jQuery, Modernizr
+    Twitter Bootstrap
